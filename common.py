@@ -45,7 +45,7 @@ def donner_possible(combinaison, ev):
             combinaisons_possible.add(comb)
     return combinaisons_possible
 
-print(donner_possible('RRVB',(0, 2)))
+# print(donner_possible('RRVB',(0, 2)))
 
 
 def maj_possibles(comb_possible, combinaison, ev):
@@ -56,5 +56,5 @@ def maj_possibles(comb_possible, combinaison, ev):
             comb_possible.remove(comb)
     return comb_possible
     
-print(maj_possibles(donner_possible('RRVB', (0, 1))), 'RRRR', (0, 0))
-    
+# print(maj_possibles(donner_possible('RRVB', (0, 1))), 'RRRR', (0, 0))
+# CACA 
