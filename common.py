@@ -59,5 +59,3 @@ def maj_possibles(comb_possible, combinaison, ev):
     return comb_possible
     
 # print(maj_possibles(donner_possible('RRVB', (0, 1))), 'RRRR', (0, 0))
-
-#CACA pipi
