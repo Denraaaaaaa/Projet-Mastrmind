@@ -15,7 +15,7 @@ def codemaker(combinaison):
     else:
         for comb in combinaisons_possible:
             maxi = 0
-            n = len(common.donner_possibles(combinaison, common.evaluation(combinaison, comb)))
+            n = len(common.maj_possibles(combinaisons_possible, comb, common.evaluation(combinaison, comb)))
             if n >= maxi:
                 solution = comb
     return solution
