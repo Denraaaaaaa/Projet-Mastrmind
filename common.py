@@ -37,7 +37,7 @@ def evaluation(combinaison, solution):
 # print(evaluation(4555, "JORV")) # Pour verifier l'AssertionError
 
 
-def donner_possible(combinaison, ev):
+def donner_possibles(combinaison, ev):
     combinaisons_possible = set()                                              # Création de l'ensemble
     combinaisons = set(c1 + c2 + c3 + c4 for c1 in COLORS for c2 in COLORS for c3 in COLORS for c4 in COLORS)   # Ensemble des combinaisons de 4 couleurs possibles
     for comb in combinaisons: 
