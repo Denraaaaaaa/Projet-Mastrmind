@@ -12,6 +12,8 @@ def evaluation(combinaison, solution):
     assert type(combinaison) == str
     assert len(combinaison) == len(solution) == LENGTH    # Si la combinaison n'est pas de meme taille que la solution ce n'est pas une combinaison valide 
     
+    if combinaison == None:
+        return (0, 0)
     for caractere in combinaison:            # pour chaque éléments de la combinaison
         recurrence[caractere] = solution.count(caractere) # solution.count(caractere) renvoi le nombre de fois où caractere est présent dans solution
 
@@ -38,11 +40,6 @@ def evaluation(combinaison, solution):
 
 
 def donner_possibles(combinaison, ev):
-    """
-    :param combinaison: unique combinaison testée
-    :param ev: évaluation de cette combinaison avec la solution
-    :return: l'ensemble des combinaisons possible après cette combinaison
-    """
     combinaisons_possible = set()                                              # Création de l'ensemble
     combinaisons = set(c1 + c2 + c3 + c4 for c1 in COLORS for c2 in COLORS for c3 in COLORS for c4 in COLORS)   # Ensemble des combinaisons de 4 couleurs possibles
     for comb in combinaisons: 
@@ -50,23 +47,17 @@ def donner_possibles(combinaison, ev):
             combinaisons_possible.add(comb)
     return combinaisons_possible
 
-# print(donner_possible('RRVB',(0, 2)))
-
+# print(donner_possibles('RRVB',(0, 2)))
 
 
 
 def maj_possibles(comb_possible, combinaison, ev):
-    """
-    :param comb_possible: ensemble des combinaisons encore possible avant le nouvel essai
-    :param combinaison: nouvelle combinaison proposée
-    :param ev: évaluation de cette combinaison par rapport à la solution
-    :return: ensemble des combinaisons encore possible après cette combinaison
-    """
+    ensemble_maj = set()
     if ev == None:
         return comb_possible
     for comb in comb_possible:
-        if evaluation(comb,combinaison) != ev:
-            comb_possible.remove(comb)
-    return comb_possible
-    
-# print(maj_possibles(donner_possible('RRVB', (0, 1))), 'RRRR', (0, 0))
+        if evaluation(comb,combinaison) == ev:
+            ensemble_maj.add(comb)
+    return ensemble_maj
+
+# Faire des tests

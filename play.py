@@ -31,14 +31,40 @@ def play(codemaker, codebreaker, quiet=False):
             return n_essais
 
 
+def play_log(codemaker, codebreaker, nom_fichier, quiet=False):
+    fichier = open(nom_fichier, "a")
+    n_essais = 0
+    codebreaker.init()
+    codemaker.init()
+    ev = None
+    if not quiet:
+        print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
+    while True:
+        combinaison = codebreaker.codebreaker(ev)
+        ev = codemaker.codemaker(combinaison)
+        n_essais += 1
+        fichier.write(combinaison)
+        fichier.write(ev)
+        if not quiet:
+            print("Essai {} : {} ({},{})".format(n_essais, combinaison, ev[0], ev[1]))
+        if ev[0] >= common.LENGTH:
+            if not quiet:
+                print("Bravo ! Trouvé {} en {} essais".format(combinaison, n_essais))
+                fichier.close()
+            return n_essais
+       
+        
 if __name__ == '__main__':
     # Les lignes suivantes sont à modifier / supprimer selon ce qu'on veut faire, quelques exemples :
 
     # Faire jouer ensemble codemaker0.py et codebreaker0.py pour 5 parties :
-    import codebreaker0
-    import codemaker0
+    # import codebreaker0
+    # import codemaker0
+    import codebreaker2
+    import codemaker2
     for i in range(5):
-        play(codemaker0, codebreaker0)
+        play(codemaker2, codebreaker2)
+        # play_log(codemaker2, codebreaker2, "test.txt")
 
     #  Faire jouer un humain contre codemaker0.py :
     #import codemaker0

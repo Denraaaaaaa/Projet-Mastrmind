@@ -10,12 +10,11 @@ def init():
 def codemaker(combinaison):
     global solution
     global combinaisons_possible
-    if combinaison == None:
-        return solution
-    else:
-        for comb in combinaisons_possible:
-            maxi = 0
-            n = len(common.maj_possibles(combinaisons_possible, comb, common.evaluation(combinaison, comb)))
-            if n >= maxi:
-                solution = comb
-    return solution
+    
+    for comb in combinaisons_possible:
+        maximum = 0
+        n = len(common.maj_possibles(combinaisons_possible, comb, common.evaluation(combinaison, comb)))
+        if n >= maximum:
+            solution = comb
+            
+    return common.evaluation(combinaison, solution)
