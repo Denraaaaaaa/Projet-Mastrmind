@@ -43,8 +43,8 @@ def play_log(codemaker, codebreaker, nom_fichier, quiet=False):
         combinaison = codebreaker.codebreaker(ev)
         ev = codemaker.codemaker(combinaison)
         n_essais += 1
-        fichier.write(combinaison)
-        fichier.write(ev)
+        fichier.write(str(combinaison) + "\n")
+        fichier.write(str(ev) + "\n")
         if not quiet:
             print("Essai {} : {} ({},{})".format(n_essais, combinaison, ev[0], ev[1]))
         if ev[0] >= common.LENGTH:
@@ -63,8 +63,8 @@ if __name__ == '__main__':
     import codebreaker2
     import codemaker2
     for i in range(5):
-        play(codemaker2, codebreaker2)
-        # play_log(codemaker2, codebreaker2, "test.txt")
+        # play(codemaker2, codebreaker2)
+        play_log(codemaker2, codebreaker2, "test.txt")
 
     #  Faire jouer un humain contre codemaker0.py :
     #import codemaker0
