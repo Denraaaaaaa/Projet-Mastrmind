@@ -10,7 +10,7 @@ def init():
 def codemaker(combinaison):
     global solution
     global combinaisons_possible
-    
+    # assert type(combinaison) == str
     for comb in combinaisons_possible:
         maximum = 0
         n = len(common.maj_possibles(combinaisons_possible, comb, common.evaluation(combinaison, comb)))

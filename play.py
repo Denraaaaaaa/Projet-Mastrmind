@@ -48,12 +48,12 @@ def play_log(codemaker, codebreaker, nom_fichier, quiet=False):
         if not quiet:
             print("Essai {} : {} ({},{})".format(n_essais, combinaison, ev[0], ev[1]))
         if ev[0] >= common.LENGTH:
+            fichier.close()
             if not quiet:
                 print("Bravo ! Trouvé {} en {} essais".format(combinaison, n_essais))
-                fichier.close()
             return n_essais
        
-        
+    
 if __name__ == '__main__':
     # Les lignes suivantes sont à modifier / supprimer selon ce qu'on veut faire, quelques exemples :
 

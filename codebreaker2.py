@@ -10,10 +10,12 @@ def init():
 
 def codebreaker(evaluation):
     if evaluation == None:
-        combinaison = random.choices(combinaisons_possible)
+        combinaison = ''.join(random.choices(common.COLORS, k=common.LENGTH))
         traite.append(combinaison)
         return combinaison
     else:  
-        combinaison = random.choices(common.maj_possibles(combinaisons_possible, traite[-1], evaluation))
+        # Ici on transforme l'ensemble des combinaisons possible en une liste car la fonction random.choice ne marche pas avec des ensembles
+        combinaison = random.choice(list(common.maj_possibles(combinaisons_possible, traite[-1], evaluation)))
         traite.append(combinaison)
         return combinaison
+

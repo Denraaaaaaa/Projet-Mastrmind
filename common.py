@@ -10,6 +10,7 @@ def evaluation(combinaison, solution):
     mp = 0                                   # mp pour "mal placé"
     recurrence = {}                          # Ce dictionnaire permettera de savoir combien de fois faudra-t-il traiter un element de la combinaison.
     assert type(combinaison) == str
+    assert type(solution) == str
     assert len(combinaison) == len(solution) == LENGTH    # Si la combinaison n'est pas de meme taille que la solution ce n'est pas une combinaison valide 
     
     if combinaison == None:
@@ -50,14 +51,11 @@ def donner_possibles(combinaison, ev):
 # print(donner_possibles('RRVB',(0, 2)))
 
 
-
 def maj_possibles(comb_possible, combinaison, ev):
-    ensemble_maj = set()
-    if ev == None:
-        return comb_possible
+    obsolete = set() 
     for comb in comb_possible:
-        if evaluation(comb,combinaison) == ev:
-            ensemble_maj.add(comb)
-    return ensemble_maj
+        if evaluation(comb,combinaison) != ev:
+            obsolete.add(comb)
+    return comb_possible - obsolete  # Renvoi comb_possible privé de obsolete
 
 # Faire des tests
