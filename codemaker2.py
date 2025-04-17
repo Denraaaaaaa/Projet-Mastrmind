@@ -4,17 +4,22 @@ import random
 def init():
     global solution
     solution = ''.join(random.choices(common.COLORS, k=common.LENGTH))
-    global combinaisons_possible
-    combinaisons_possible = set(c1 + c2 + c3 + c4 for c1 in common.COLORS for c2 in common.COLORS for c3 in common.COLORS for c4 in common.COLORS)
+    global solutions_encore_possible
+    solutions_encore_possible = None
     
 def codemaker(combinaison):
     global solution
-    global combinaisons_possible
+    global solutions_encore_possible
     assert type(combinaison) == str
-    for comb in combinaisons_possible:
+    assert type(solution) == str
+    if solutions_encore_possible == None:
+        solutions_encore_possible = common.donner_possibles(combinaison, common.evaluation(combinaison, solution))
+        
+    for solution_possible in solutions_encore_possible:
         maximum = 0
-        n = len(common.maj_possibles(combinaisons_possible, comb, common.evaluation(combinaison, comb)))
+        
+        n = len(common.maj_possibles(solutions_encore_possible, combinaison, common.evaluation(combinaison, solution_possible)))
         if n >= maximum:
-            solution = comb
+            solution = solution_possible
             
     return common.evaluation(combinaison, solution)
