@@ -2,20 +2,29 @@ import common
 import random
 
 def init():
-    global combinaisons_possible
-    combinaisons_possible = set(c1 + c2 + c3 + c4 for c1 in common.COLORS for c2 in common.COLORS for c3 in common.COLORS for c4 in common.COLORS)
+    global combinaisons_encore_possible 
+    combinaisons_encore_possible = None
     global traite
     traite = []
     return
 
 def codebreaker(evaluation):
-    if evaluation == None:
+    global combinaisons_encore_possible
+    global traite 
+    
+    if evaluation == None :
         combinaison = ''.join(random.choices(common.COLORS, k=common.LENGTH))
         traite.append(combinaison)
         return combinaison
-    else:  
-        # Ici on transforme l'ensemble des combinaisons possible en une liste car la fonction random.choice ne marche pas avec des ensembles
-        combinaison = random.choice(list(common.maj_possibles(combinaisons_possible, traite[-1], evaluation)))
-        traite.append(combinaison)
-        return combinaison
+      
+    elif combinaisons_encore_possible == None :
+        combinaisons_encore_possible = common.donner_possibles(traite[-1], evaluation)
+        
+    else :
+        combinaisons_encore_possible = common.maj_possibles(combinaisons_encore_possible, traite[-1], evaluation)
+    
+    # Ici on transforme l'ensemble des combinaisons possible en une liste car la fonction random.choice ne marche pas avec des ensembles
+    combinaison = random.choice(list(combinaisons_encore_possible))
+    traite.append(combinaison)
+    return combinaison
 

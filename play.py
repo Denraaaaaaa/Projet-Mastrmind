@@ -60,6 +60,8 @@ if __name__ == '__main__':
     # Faire jouer ensemble codemaker0.py et codebreaker0.py pour 5 parties :
     # import codebreaker0
     # import codemaker0
+    import codebreaker1
+    import codemaker1
     import codebreaker2
     import codemaker2
     for i in range(5):
