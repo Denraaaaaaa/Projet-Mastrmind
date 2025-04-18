@@ -38,7 +38,7 @@ def codebreaker(evaluation):
         # Idem ici
         combinaison = random.choice(list(combinaisons_encore_possible))
         traite.append(combinaison)
-    
+        
     return combinaison
 
 

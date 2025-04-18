@@ -1,0 +1,54 @@
+RRJN
+(2, 1)
+RVON
+(1, 2)
+VRMN
+(2, 1)
+BRVN
+(4, 0)
+JRNR
+(1, 2)
+MJVR
+(0, 1)
+RRGN
+(4, 0)
+RRRN
+(3, 0)
+RRRV
+(4, 0)
+OOVJ
+(1, 0)
+RNBJ
+(1, 2)
+BRMJ
+(3, 0)
+BRRJ
+(4, 0)
+NJGV
+(0, 1)
+JBMB
+(0, 0)
+ORVO
+(2, 1)
+GROO
+(1, 2)
+ONRO
+(4, 0)
+VJGB
+(0, 0)
+RORO
+(1, 2)
+RNOR
+(0, 4)
+ORRN
+(4, 0)
+RORV
+(1, 2)
+ORBV
+(2, 1)
+RRBO
+(1, 1)
+OMJO
+(1, 0)
+NJJJ
+(2, 0)
