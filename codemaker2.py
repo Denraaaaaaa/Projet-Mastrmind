@@ -5,7 +5,7 @@ import itertools
 def init():
     # Initialisation des variables globales
     global solution
-    solution = ''
+    solution = ''.join(random.choices(common.COLORS, k=common.LENGTH))
     global solutions_encore_possible
     
     # Produit cartésien de COLORS avec elle même LENGTH-fois dans une liste.

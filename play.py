@@ -65,7 +65,7 @@ if __name__ == '__main__':
     import codebreaker2
     import codemaker2
     for i in range(1000):
-        print(play(codemaker1, codebreaker1, quiet = True))
+        print(play(codemaker2, codebreaker2))
         # play_log(codemaker2, codebreaker2, "test.txt")
 
     #  Faire jouer un humain contre codemaker0.py :

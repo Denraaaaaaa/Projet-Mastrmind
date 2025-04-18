@@ -7,7 +7,7 @@ import codemaker2
 import codebreaker2
 import matplotlib.pyplot as plt
 
-nb_parties = 100
+nb_parties = 10000
 
 y = []
 
