@@ -71,7 +71,7 @@ if __name__ == '__main__':
     import codebreaker2
     import codemaker2
     
-    repetition = 7
+    repetition = 1
     start_time = time.time()
     for i in range(repetition):
         print(play(codemaker2, codebreaker2, quiet = False))
