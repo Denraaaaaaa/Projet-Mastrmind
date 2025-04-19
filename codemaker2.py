@@ -24,12 +24,13 @@ def codemaker(combinaison):
     for solution_possible in solutions_encore_possible:
         
         # Copie pour eviter des problèmes lors de l'itération
-        encore_possible_partiel = solutions_encore_possible
+        encore_possible_partiel = solutions_encore_possible.copy()
         maximum = -1 # Maximum négatif pour être sur que n'importe quelle première solution sera acceptée car n >= 0.
         ev = common.evaluation(combinaison, solution_possible) # Stock l'évaluation pour éviter des calculs inutiles
         
         # Ensemble des solutions qui seront encore possible après avoir proposé la combinaison si solution_possible est solution.
         encore_possible_partiel = common.maj_possibles(encore_possible_partiel, combinaison, ev)
+        
         n = len(encore_possible_partiel)
         
         # Recherche de la solution donnant le plus de possiblités 
