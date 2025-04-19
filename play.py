@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 
 import common
+import time
 
 
 def play(codemaker, codebreaker, quiet=False):
@@ -21,12 +22,12 @@ def play(codemaker, codebreaker, quiet=False):
         print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
     while True:
         combinaison = codebreaker.codebreaker(ev)
-        print(f"Combinaison : {combinaison}")
-        print(f"Combinaisons encore possibles : {codebreaker.combinaisons_encore_possible}")
+        # print(f"Combinaison : {combinaison}")
+        # print(f"Combinaisons encore possibles : {codebreaker.combinaisons_encore_possible}")
         ev = codemaker.codemaker(combinaison)
-        print(f"Évualuation : {ev}")
-        print(f"Solution : {codemaker.solution}")
-        print(f"nombre d'essai : {n_essais}")
+        # print(f"Évualuation : {ev}")
+        # print(f"Solution : {codemaker.solution}")
+        # print(f"nombre d'essai : {n_essais}")
         n_essais += 1
         if not quiet:
             print("Essai {} : {} ({},{})".format(n_essais, combinaison, ev[0], ev[1]))
@@ -69,8 +70,14 @@ if __name__ == '__main__':
     import codemaker1
     import codebreaker2
     import codemaker2
+    
+    start_time = time.time()
     for i in range(1):
-        print(play(codemaker2, codebreaker2))
+        print(play(codemaker2, codebreaker2, quiet = False))
+    end_time = time.time()
+    
+    print(f"\nTemps d'exécution total : {end_time - start_time:.6f} secondes\n")
+    print(f"\nTemps d'exécution moyen : {(end_time - start_time)/5:.6f} secondes\n")
         # play_log(codemaker2, codebreaker2, "test.txt")
 
     #  Faire jouer un humain contre codemaker0.py :

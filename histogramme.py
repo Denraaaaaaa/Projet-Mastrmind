@@ -7,7 +7,7 @@ import codemaker2
 import codebreaker2
 import matplotlib.pyplot as plt
 
-nb_parties = 10000
+nb_parties = 10
 
 y = []
 
@@ -17,7 +17,7 @@ codemaker = int(input("Quel est le numéro du codemaker ?\n"))
 print("Chargement\n")
 
 for i in range(nb_parties):
-    y.append(play.play(codemaker1,codebreaker1, True))
+    y.append(play.play(codemaker2,codebreaker2, True))
     
     pourcentage = 100*(i/nb_parties)
     if pourcentage%1==0:

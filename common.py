@@ -116,7 +116,7 @@ def test_evaluation():
     #     print("Erreur détectée : combinaison doit être une chaîne de caractères.")
 
 # Appelle la fonction de test
-test_evaluation()
+# test_evaluation()
 
 # donner_possible
 

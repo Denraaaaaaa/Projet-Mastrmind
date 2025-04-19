@@ -1,6 +1,7 @@
 import common
 import random
 import itertools
+import time 
 
 def init():
     # Initialisation des variables globales
@@ -17,7 +18,8 @@ def codemaker(combinaison):
     global solutions_encore_possible
     assert type(combinaison) == str
     assert type(solution) == str
-
+    
+    start_time = time.time()
     for solution_possible in solutions_encore_possible:
         maximum = -1 # Maximum négatif pour être sur que n'importe quelle première solution sera acceptée car n >= 0.
         ev = common.evaluation(combinaison, solution_possible)
@@ -31,6 +33,11 @@ def codemaker(combinaison):
             maximum = n
             solution = solution_possible 
             ev_solution = ev
+            meilleur_encore_possible = encore_possible_partiel
+    end_time = time.time()
+    print(f"\nTemps d'exécution de la recherche de la solution optimale : {end_time-start_time:.6f} secondes\n")
+    
     # Mise à jour des solutions encore possibles après l'évaluation
-    solutions_encore_possible = common.maj_possibles(solutions_encore_possible, combinaison, ev_solution)
+    solutions_encore_possible = meilleur_encore_possible
+    
     return ev_solution
