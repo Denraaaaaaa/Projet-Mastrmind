@@ -34,7 +34,6 @@ def codebreaker(evaluation):
     # Cas général 
     else :
         combinaisons_encore_possible = common.maj_possibles(combinaisons_encore_possible, traite[-1], evaluation)
-        
         # Idem ici
         combinaison = random.choice(list(combinaisons_encore_possible))
         traite.append(combinaison)

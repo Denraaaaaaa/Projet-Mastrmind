@@ -21,7 +21,12 @@ def play(codemaker, codebreaker, quiet=False):
         print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
     while True:
         combinaison = codebreaker.codebreaker(ev)
+        print(f"Combinaison : {combinaison}")
+        print(f"Combinaisons encore possibles : {codebreaker.combinaisons_encore_possible}")
         ev = codemaker.codemaker(combinaison)
+        print(f"Évualuation : {ev}")
+        print(f"Solution : {codemaker.solution}")
+        print(f"nombre d'essai : {n_essais}")
         n_essais += 1
         if not quiet:
             print("Essai {} : {} ({},{})".format(n_essais, combinaison, ev[0], ev[1]))
@@ -64,7 +69,7 @@ if __name__ == '__main__':
     import codemaker1
     import codebreaker2
     import codemaker2
-    for i in range(1000):
+    for i in range(1):
         print(play(codemaker2, codebreaker2))
         # play_log(codemaker2, codebreaker2, "test.txt")
 
