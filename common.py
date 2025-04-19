@@ -52,11 +52,14 @@ def donner_possibles(combinaison, ev):
     return combinaisons_possible
 
 def maj_possibles(comb_possible, combinaison, ev):
-    obsolete = set() 
-    for comb in comb_possible:
-        if evaluation(comb,combinaison) != ev:
-            obsolete.add(comb)
-    return comb_possible - obsolete  # Renvoi comb_possible privé de obsolete
+    
+    # Utilisation d'une copie temporaire pour éviter des problèmes lors de l'itération
+    comb_a_supp = {comb for comb in comb_possible if evaluation(comb, combinaison) != ev} # Compréhension d'ensemble est plus optimisée que de faire une boucle 
+    
+    # Modifie directement comb_possible en supprimant tout les éléments de comb_a_supp qui sont dans comb_possible
+    comb_possible.difference_update(comb_a_supp) 
+    
+    return comb_possible
 
 #%% Tests
 import time
