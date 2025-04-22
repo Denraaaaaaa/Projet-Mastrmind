@@ -22,13 +22,13 @@ def play(codemaker, codebreaker, quiet=False):
         print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
     while True:
         combinaison = codebreaker.codebreaker(ev)
-        # print(f"Combinaison : {combinaison}")
+        print(f"Combinaison : {combinaison}")
         # print(f"Combinaisons encore possibles : {codebreaker.combinaisons_encore_possible}")
         ev = codemaker.codemaker(combinaison)
-        # print(f"Évualuation : {ev}")
-        # print(f"Solution : {codemaker.solution}")
-        # print(f"nombre d'essai : {n_essais}")
+        print(f"Évualuation : {ev}")
+        print(f"Solution : {codemaker.solution}")
         n_essais += 1
+        print(f"nombre d'essai : {n_essais}")
         if not quiet:
             print("Essai {} : {} ({},{})".format(n_essais, combinaison, ev[0], ev[1]))
         if ev[0] >= common.LENGTH:
