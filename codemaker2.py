@@ -35,7 +35,7 @@ def codemaker(combinaison):
             evaluations[ev] = [solution_possible]
 
     for evaluation in evaluations:
-        n = len(evaluations[evaluation]) # Nombre de solutions associées à ce score
+        n = len(evaluations[evaluation]) # Nombre de solutions associées à cette évaluation
         if n > maximum:
             maximum = n
             pire_evaluation = evaluation

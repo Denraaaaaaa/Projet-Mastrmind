@@ -70,12 +70,19 @@ if __name__ == '__main__':
     import codemaker1
     import codebreaker2
     import codemaker2
+    import codebreaker3
     
-    # repetition = 1
-    # for i in range(repetition):
-    #     print(play(codemaker2, codebreaker2, quiet = False))
+    repetition = 1
+    start_time = time.time()
+    for i in range(repetition):
+        print(play(codemaker2, codebreaker3, quiet = False))
+    end_time = time.time()
+    total_time = end_time - start_time
+    mean_time = total_time / repetition
+    print(f"Temps total d'exécution : {total_time:.6f} secondes\n")
+    print(f"Temps d'exécution moyen : {mean_time:.6f} secondes")
     
-    play_log(codemaker2, codebreaker2, "test.txt", quiet = False)
+    # play_log(codemaker2, codebreaker2, "test.txt", quiet = False)
 
     #  Faire jouer un humain contre codemaker0.py :
     #import codemaker0

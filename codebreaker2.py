@@ -11,7 +11,6 @@ def init():
     # Produit cartésien de COLORS avec elle même LENGTH-fois dans une liste.
     produit_cartesien = list(itertools.product(common.COLORS, repeat = common.LENGTH))  
     combinaisons_encore_possible = set(''.join(tup) for tup in produit_cartesien)
-    return
 
 def codebreaker(evaluation):
     global combinaisons_encore_possible
