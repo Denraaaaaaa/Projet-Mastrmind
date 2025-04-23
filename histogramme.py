@@ -7,7 +7,7 @@ import codemaker2
 import codebreaker2
 import matplotlib.pyplot as plt
 
-nb_parties = 10
+nb_parties = int(input("Combien de parties voulez vous simuler ?\n"))
 
 y = []
 
@@ -17,7 +17,7 @@ codemaker = int(input("Quel est le numéro du codemaker ?\n"))
 print("Chargement\n")
 
 for i in range(nb_parties):
-    y.append(play.play(codemaker2,codebreaker2, True))
+    y.append(play.play(codemaker1,codebreaker0, True))
     
     pourcentage = 100*(i/nb_parties)
     if pourcentage%1==0:
@@ -44,13 +44,13 @@ plt.axvline(8**4, color='gold', linestyle='dashed', linewidth=1, label=f'Esp. th
 
 # Ajout des labels
 plt.xlabel("Nombre d'essais avant réussite")
-plt.ylabel("Fréquence (normalisée)")
-plt.title(f"Distribution du nombre d'essais (codebreaker{codebreaker})")
+plt.ylabel("Fréquence")
+plt.title(f"Distribution du nombre d'essais (codebreaker{codebreaker} contre codemaker{codemaker}) sur {nb_parties} essais")
 plt.legend()
 plt.grid()
 
 # Sauvegarde de l'histogramme
-plt.savefig(f"histogramme codebreaker{codebreaker} avec codemaker{codemaker}.png", transparent = True)
+plt.savefig(f"histogramme codebreaker{codebreaker} contre codemaker{codemaker} pour {nb_parties} essais esp.exp de {esperance}.png", transparent = True)
 
 # Affichage de l’histogramme
 plt.show()
