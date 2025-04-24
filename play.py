@@ -72,7 +72,7 @@ if __name__ == '__main__':
     import codemaker2
     import codebreaker3
     
-    repetition = 2
+    repetition = 4
     start_time = time.time()
     essais_totaux = 0
     for i in range(repetition):
