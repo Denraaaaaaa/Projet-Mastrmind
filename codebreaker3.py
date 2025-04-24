@@ -5,16 +5,18 @@ import itertools
 def init():
     global combinaisons_encore_possible
     global traite
+    global toutes_les_combinaisons
     traite = []
-
+    
+    # Ensemble des combinaisons possibles qui na va pas changer
+    toutes_les_combinaisons = set(''.join(tup) for tup in list(itertools.product(common.COLORS, repeat=common.LENGTH)))
+    
     # Produit cartésien de COLORS avec elle même LENGTH-fois dans une liste.
     combinaisons_encore_possible = set(''.join(tup) for tup in list(itertools.product(common.COLORS, repeat=common.LENGTH)))
 
 def codebreaker(evaluation):
     global combinaisons_encore_possible
     global traite
-
-    toutes_les_combinaisons = set(''.join(tup) for tup in list(itertools.product(common.COLORS, repeat=common.LENGTH)))
 
     # Si il ne s'agit pas de la première combinaison
     if evaluation != None:
@@ -44,7 +46,7 @@ def codebreaker(evaluation):
             if n > maximum:
                 maximum = n 
 
-        combinaisons_anti_cheat[combinaison] = n
+        combinaisons_anti_cheat[combinaison] = maximum
 
     # Recherche de la taille minimale
     for combinaison in combinaisons_anti_cheat:
@@ -53,7 +55,7 @@ def codebreaker(evaluation):
             minimum = n
 
     # L'utilisation de compréhension de listes est plus optimisée que de faire une boucle. Utilisation de listes et pas d'ensembles car random.choice ne marche pas avec les ensembles
-    bonnes_combinaisons = [combi for combi in combinaisons_anti_cheat if combinaisons_anti_cheat[combi] == n]
+    bonnes_combinaisons = [combi for combi in combinaisons_anti_cheat if combinaisons_anti_cheat[combi] == minimum]
     bonnes_combinaisons_possible = [combi for combi in bonnes_combinaisons if combi in combinaisons_encore_possible]
 
     if not bonnes_combinaisons_possible: # Si la liste est vide
