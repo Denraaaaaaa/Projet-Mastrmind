@@ -1,6 +1,4 @@
 import common
-import time
-
 
 def play(codemaker, codebreaker, quiet=False):
     """
@@ -71,23 +69,10 @@ if __name__ == '__main__':
     import codemaker2
     import codebreaker3
     
-    repetition = 4
-
-    #start_time = time.time()
-    #essais_totaux = 0
-
-    for i in range(repetition):
-        partie = play(codemaker2, codebreaker3, quiet = False)
-        # essais_totaux += partie
-        print(partie)
-
-    #end_time = time.time()
-    #total_time = end_time - start_time
-    #mean_time = total_time / repetition
-    #mean_partie = essais_totaux / repetition
-    #print(f"Temps d'exécution total : {total_time:.6f} secondes\n")
-    #print(f"Temps d'exécution moyen : {mean_time:.6f} secondes")
-    #print(f"Nombre d'essais moyen par partie : {mean_partie:.0f} essais")
+    #repetition = 4
+    #for i in range(repetition):
+    #    partie = play(codemaker1, codebreaker2, quiet = False)
+    #    print(partie)
     
     # play_log(codemaker2, codebreaker2, "fichier_log.txt", quiet = False)
 

@@ -1,10 +1,11 @@
+import common
 import tkinter as tk
 from tkinter import messagebox
 import codemaker1, codemaker2
 
 # Couleurs autorisées et longueur de la combinaison (à adapter selon common.py)
-COLORS = ['R', 'G', 'B', 'Y', 'O', 'P']  # Red, Green, Blue, Yellow, Orange, Purple
-LENGTH = 4
+COLORS = common.COLORS  # Red, Green, Blue, Yellow, Orange, Purple
+LENGTH = common.LENGTH
 
 # Une fonction factice d’évaluation pour tester l’interface
 def evaluer_combinaison(proposition):

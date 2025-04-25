@@ -20,7 +20,7 @@ def check_codemaker(log):
 
 #%% Tests
 
-print(check_codemaker("test.txt"))
+# print(check_codemaker("test.txt"))
 
 
 
