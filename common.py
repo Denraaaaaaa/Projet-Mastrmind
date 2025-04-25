@@ -112,6 +112,8 @@ def test_evaluation():
     # except AssertionError:
     #     print("Erreur détectée : combinaison doit être une chaîne de caractères.")
 
+print(evaluation('BBCB', 'CCBB'))
+print(assert evaluation('BBCB', 'CCBB') == (1,2))
 # Appelle la fonction de test
 # test_evaluation()
 

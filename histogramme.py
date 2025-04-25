@@ -20,7 +20,7 @@ codemaker = int(input("Quel est le numéro du codemaker ?\n"))
 print("Chargement\n")
 
 for i in range(nb_parties):
-    y.append(play.play(codemaker2,codebreaker3, True))
+    y.append(play.play(codemaker1,codebreaker3, True))
     
     pourcentage = 100*(i/nb_parties)
     if pourcentage%1==0:
