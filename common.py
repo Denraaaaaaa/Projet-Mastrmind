@@ -1,46 +1,41 @@
-#!/usr/bin/env python3
 import itertools # Import de Itertools, bibliothèque qui offre des fonctions pour créer des combinaisons et des permutations.
+import time # Import de time une bibliothèque qui va permettre de mesurer des temps durant l'exécution du programme.
 
 LENGTH = 4
 COLORS = ['R', 'V', 'B', 'J', 'N', 'M', 'O', 'G']
 # Notez que vos programmes doivent continuer à fonctionner si on change les valeurs par défaut ci-dessus
 
+#%% Fonction evaluation
 def evaluation(combinaison, solution):
-    bp = 0                                   
-    mp = 0
-    
-    # assert type(combinaison) == str
-    # assert type(solution) == str
+    assert type(combinaison) == str
+    assert type(solution) == str
     assert len(combinaison) == len(solution) == LENGTH
-    
+    bp = 0
+    mp = 0
     combinaison_l = list(combinaison)
     solution_l = list(solution)
 
-    # On va d'abord parcourir le mot pour savoir combien de couleurs sont bien placés. On fait cela pour donner la priorité au couleurs bien placées lors de l'analyse du mot.
-    # En effet un mot pourrait commencer par exemple par une couleur mal placés en trop et donc ne pas prendre en compte une potentielle couleur bien placé plus tard dans la solution
+    # On va d'abord donner la priorité aux couleurs bien placées lors de l'analyse du mot.
+    # En effet un mot pourrait commencer par exemple par une couleur mal placée en trop et donc ne pas prendre en compte une potentielle couleur bien placé plus tard dans la solution
     for i in range(LENGTH):                  
-        if combinaison_l[i] == solution_l[i]:
-            combinaison_l[i] = None
-            solution_l[i] = None
+        if combinaison_l[i] == solution_l[i]: # Si la couleur est mal placée
+            combinaison_l[i] = None # On la remplace par None pour ne plus avoir à la traiter
+            solution_l[i] = None # Idem
             bp += 1
             
     # Couleurs mal placées
     for k in range(LENGTH):                  
-        if (combinaison_l[k] in solution_l) and (combinaison_l[k] != None): # Si la couleur est encore présente dans la solution
+        if (combinaison_l[k] in solution_l) and (combinaison_l[k] != None): # Si la couleur est encore présente dans la solution mais qu'il ne s'agit pas d'un None
             
-        # solution_l.index(combinaison_l[k]) donne l'indice de la première occurence de combinaison_l[k] dans solution_l
-            solution_l[solution_l.index(combinaison_l[k])] = None 
-            
-            # On aurait pu utiliser un dictionnaire d'occurences plutot que de chercher l'indice de la couleur dans solution_l
-            # Cependant après avoir comparer les temps d'exécution des deux méthodes sur des listes de petites taille, l'utilisation d'index est plus optimisée, 
-            # Cette utilisation d'index donne cependant à la boucle des couleurs mal placées une complexité en O(n^2) pour O(n) pour un dictionnaire d'occurences
-            # Les dictionnaires seraient donc plus optimisés pour des combinaisons de grande taille or ce n'est pas le cas de la mastermind donc on utilise ici .index.
-            
+            # solution_l.index(combinaison_l[k]) donne l'indice de la première occurence de combinaison_l[k] dans solution_l
+            solution_l[solution_l.index(combinaison_l[k])] = None
             combinaison_l[k] = None
             mp += 1
-            
+
+    # Renvoi de l'évaluation
     return (bp, mp)
 
+#%% Fonction donner_possible
 def donner_possibles(combinaison, ev):
     combinaisons_possible = set() # Création de l'ensemble
     produit_cartesien = list(itertools.product(COLORS, repeat = LENGTH)) # Produit cartésien de COLORS avec elle même LENGTH-fois dans une liste.
@@ -51,6 +46,7 @@ def donner_possibles(combinaison, ev):
             combinaisons_possible.add(comb) 
     return combinaisons_possible
 
+#%% Fonction maj_possible
 def maj_possibles(comb_possible, combinaison, ev):
     
     # Utilisation d'une copie temporaire pour éviter des problèmes lors de l'itération
@@ -62,8 +58,6 @@ def maj_possibles(comb_possible, combinaison, ev):
     return comb_possible
 
 #%% Tests
-import time
-
 def test_evaluation():
     # Calcul un temps moyen d'execution car la fonction evaluation s'execute trop rapidement pour pouvoir etre mesuré en une fois
     # Par exemple :

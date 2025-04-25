@@ -47,12 +47,10 @@ def codemaker(combinaison):
 
     return pire_evaluation
 
-# # Ancien codemaker (trop lent) cf. compte rendu
+#%% Ancien codemaker2 (trop lent) cf. compte rendu
+
 # def codemaker(combinaison):
-#     """
-#     Ce qui va pas avec celle là : pour chaque solution je fait un copie de l'ensemble des 4096 possibiltés et puis je parcours beaucoup de fois encore_possible_partiel (dans maj_possible)
-#     De plus je fais potentiellement des évluations pour rien
-#     """
+#
 #     global solution
 #     global solutions_encore_possible
 #     assert type(combinaison) == str

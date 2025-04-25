@@ -6,11 +6,11 @@ def init():
     # Initialisation des variables globales
     global combinaisons_encore_possible 
     global traite
-    traite = []
+    traite = [] # Stock les combinaisons traitées au cours de la partie. Le dernier élément étant la dernière combinaison testé
     
-    # Produit cartésien de COLORS avec elle même LENGTH-fois dans une liste.
-    produit_cartesien = list(itertools.product(common.COLORS, repeat = common.LENGTH))  
-    combinaisons_encore_possible = set(''.join(tup) for tup in produit_cartesien)
+    # Produit cartésien de COLORS avec elle-même LENGTH-fois dans une liste.
+    produit_cartesien = list(itertools.product(common.COLORS, repeat = common.LENGTH)) # De la forme [('R', 'R', 'V', 'B'), ...]
+    combinaisons_encore_possible = set(''.join(tup) for tup in produit_cartesien) # De la forme {'RRVB', ...}
 
 def codebreaker(evaluation):
     global combinaisons_encore_possible
@@ -31,7 +31,6 @@ def codebreaker(evaluation):
         traite.append(combinaison) # Ajout à la liste des éléments traités
         
     return combinaison
-
 
 #%% Tests
 

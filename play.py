@@ -1,5 +1,3 @@
-#!/usr/bin/env python3
-
 import common
 import time
 
@@ -36,30 +34,31 @@ def play(codemaker, codebreaker, quiet=False):
                 print("Bravo ! Trouvé {} en {} essais".format(combinaison, n_essais))
             return n_essais
 
-
+#%% Fonction play_log
 def play_log(codemaker, codebreaker, nom_fichier, quiet=False):
-    fichier = open(nom_fichier, "a")
-    n_essais = 0
-    codebreaker.init()
-    codemaker.init()
-    ev = None
-    if not quiet:
-        print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
-    while True:
-        combinaison = codebreaker.codebreaker(ev)
-        ev = codemaker.codemaker(combinaison)
-        n_essais += 1
-        fichier.write(str(combinaison) + "\n")
-        fichier.write(str(ev) + "\n")
+    with open(nom_fichier, "w") as fichier : # Ouverture et fermeture du fichier après modifications en mode "w" pour « write »
+
+        # Fonction play
+        n_essais = 0
+        codebreaker.init()
+        codemaker.init()
+        ev = None
         if not quiet:
-            print("Essai {} : {} ({},{})".format(n_essais, combinaison, ev[0], ev[1]))
-        if ev[0] >= common.LENGTH:
-            fichier.close()
+            print('Combinaisons de taille {}, couleurs disponibles {}'.format(common.LENGTH, common.COLORS))
+        while True:
+            combinaison = codebreaker.codebreaker(ev)
+            ev = codemaker.codemaker(combinaison)
+            n_essais += 1
+            fichier.write(str(combinaison) + "\n") # Écriture de la combinaison donnée dans le log
+            fichier.write(str(ev) + "\n") # Écriture de l'évaluation reçue dans le log
             if not quiet:
-                print("Bravo ! Trouvé {} en {} essais".format(combinaison, n_essais))
-            return n_essais
+                print("Essai {} : {} ({},{})".format(n_essais, combinaison, ev[0], ev[1]))
+            if ev[0] >= common.LENGTH:
+                if not quiet:
+                    print("Bravo ! Trouvé {} en {} essais".format(combinaison, n_essais))
+                return n_essais
        
-    
+#%% Partie
 if __name__ == '__main__':
     # Les lignes suivantes sont à modifier / supprimer selon ce qu'on veut faire, quelques exemples :
 
@@ -73,21 +72,24 @@ if __name__ == '__main__':
     import codebreaker3
     
     repetition = 4
-    start_time = time.time()
-    essais_totaux = 0
+
+    #start_time = time.time()
+    #essais_totaux = 0
+
     for i in range(repetition):
         partie = play(codemaker2, codebreaker3, quiet = False)
-        essais_totaux += partie
-        print(play(codemaker2, codebreaker3, quiet = False))
-    end_time = time.time()
-    total_time = end_time - start_time
-    mean_time = total_time / repetition
-    mean_partie = essais_totaux / repetition
-    print(f"Temps d'exécution total : {total_time:.6f} secondes\n")
-    print(f"Temps d'exécution moyen : {mean_time:.6f} secondes")
-    print(f"Nombre d'essais moyen par partie : {mean_partie:.0f} essais")
+        # essais_totaux += partie
+        print(partie)
+
+    #end_time = time.time()
+    #total_time = end_time - start_time
+    #mean_time = total_time / repetition
+    #mean_partie = essais_totaux / repetition
+    #print(f"Temps d'exécution total : {total_time:.6f} secondes\n")
+    #print(f"Temps d'exécution moyen : {mean_time:.6f} secondes")
+    #print(f"Nombre d'essais moyen par partie : {mean_partie:.0f} essais")
     
-    # play_log(codemaker2, codebreaker2, "test.txt", quiet = False)
+    # play_log(codemaker2, codebreaker2, "fichier_log.txt", quiet = False)
 
     #  Faire jouer un humain contre codemaker0.py :
     #import codemaker0
